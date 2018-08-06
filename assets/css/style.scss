@@ -7,3 +7,19 @@ header p.view {
     text-align:right;
     margin:0 0 10px 0;
 }
+
+div.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.social-media {
+    width: 16px;
+    padding: 8px;
+    filter: opacity(50%);
+}
+
+img.social-media:hover {
+    filter: opacity(100%);
+}
