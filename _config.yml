@@ -7,3 +7,14 @@ description: >-
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
+plugins:
+    - jekyll-archives
+jekyll-arhives:
+    enabled: []
+    layout: 'archive'
+    permalinks:
+        year: '/year/'
+        month: '/:year/:month/'
+        day: '/:year/:month/:day/'
+        tag: '/tag/:name/'
+        category: '/category/:name/'
