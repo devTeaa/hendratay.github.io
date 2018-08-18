@@ -8,18 +8,37 @@ header p.view {
     margin:0 0 10px 0;
 }
 
-div.social-media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+center.title {
+    color: #000000;
+    font-size: 24px;
+    margin-bottom: 14px;
 }
 
-img.social-media {
-    width: 16px;
-    padding: 8px;
-    filter: opacity(50%);
+#search-bar {
+    width: 100%;
+    color: #000000;
+    background-color: transparent;
+    border-top: 0;
+    border-bottom: 1px solid #000000;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
 }
 
-img.social-media:hover {
-    filter: opacity(100%);
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 10px;
+}
+
+.cell a {
+    display: table-cell;
+    padding-right: 14px;
 }

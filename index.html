@@ -1,0 +1,91 @@
+---
+layout: default
+---
+
+<center class="title">/* homepage */</center>
+<input id="search-bar" type="text" placeholder="search" />
+<div class="row">
+	<div class="cell">daily</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://trello.com/">[trello]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">code</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://github.com/">[github]</a>
+		<a href="https://gitlab.com/">[gitlab]</a>
+		<a href="https://www.codewars.com/">[codewars]</a>
+	</div>
+</div>
+<div class="row">
+    <div class="cell">reference</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://developer.android.com/">[android developer]</a>
+		<a href="https://developers.google.com/android/">[google api for android]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">read</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://medium.com/">[medium]</a>
+		<a href="https://getpocket.com/">[pocket]</a>
+		<a href="http://m.wuxiaworld.co/">[wuxiaworld]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">design</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://www.figma.com/">[figma]</a>
+		<a href="https://pinterest.com">[pinterest]</a>
+		<a href="https://www.uplabs.com/">[uplabs]</a>
+		<a href="https://dribbble.com/">[dribbble]</a>
+		<a href="https://www.behance.net/">[behance]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">resource</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://kenney.nl/">[kenney]</a>
+		<a href="https://www.freepik.com/">[freepik]</a>
+		<a href="https://www.iconfinder.com/">[iconfinder]</a>
+		<a href="https://www.flaticon.com/">[flaticon]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">news</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://www.reddit.com/">[reddit]</a>
+		<a href="https://news.ycombinator.com/">[hacker news]</a>
+	</div>
+</div>
+<div class="row">
+	<div class="cell">sosmed</div>
+    <div class="cell">=></div>
+	<div class="cell">
+		<a href="https://www.youtube.com/">[youtube]</a>
+        <a href="https://devrant.com/">[devrant]</a>
+		<a href="https://www.facebook.com/">[facebook]</a>
+		<a href="https://www.twitter.com/">[twitter]</a>
+	</div>
+</div>
+
+<script>
+	document.getElementById('search-bar').onkeypress = function(event) {
+		if (!event) event = window.event;
+		var keyCode = event.keyCode || event.which;
+		if (keyCode == '13') {
+			window.location.href = 'https://www.google.com/search?q=' + 
+				document.getElementById('search-bar').value;
+			document.getElementById('search-bar').value = '';
+			document.getElementById('search-bar').blur();
+		}
+	}
+</script>
