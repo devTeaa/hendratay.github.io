@@ -40,5 +40,17 @@ center.title {
 }
 
 .cell a {
-    margin:0 4px 0 4px;
+    margin: 0 5px 0 5px;
+}
+
+.posts {
+    list-style-type: square;
+}
+
+li {
+    padding: 2px;
+}
+
+.post-date {
+    margin: 0 20px 0 10px;
 }
