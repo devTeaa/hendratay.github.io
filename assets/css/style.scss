@@ -40,7 +40,11 @@ center.title {
 }
 
 .cell a {
-    margin: 0 5px 0 5px;
+    margin: 0 4px 0 4px;
+}
+
+.cell a:hover {
+    margin: 0 2px 0 2px;
 }
 
 .posts {
