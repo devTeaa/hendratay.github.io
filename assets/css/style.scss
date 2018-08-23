@@ -3,11 +3,13 @@
 
 @import "{{ site.theme }}";
 
+/* navigation bar */
 header p.view {
     text-align:right;
     margin:0 0 10px 0;
 }
 
+/* homepage */
 center.title {
     color: #000000;
     font-size: 24px;
@@ -47,14 +49,21 @@ center.title {
     margin: 0 2px 0 2px;
 }
 
-.posts {
-    list-style-type: square;
-}
-
+/* blog */
 li {
     padding: 2px;
 }
 
 .post-date {
     margin: 0 20px 0 10px;
+}
+
+/* project */
+.project-language {
+    float: right;
+    color: #ffffff;
+    background: #000000;
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-style: italic;
 }

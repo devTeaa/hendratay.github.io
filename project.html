@@ -4,3 +4,15 @@ layout: default
  
 <center class="title">/* project */</center>
 <hr/>
+<ul>
+    {% for repository in site.github.public_repositories %}
+    <li>
+        <a href="{{ repository.html_url }}">[{{ repository.name }}]</a>
+        <span class="project-language">{{ repository.language }}</span>
+        {% if repository.description %}
+        <br />
+        <span>{{ repository.description }}</span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
