@@ -7,8 +7,8 @@ layout: default
 <ul>
     {% for repository in site.github.public_repositories %}
     <li>
-        <a href="{{ repository.html_url }}">[{{ repository.name }}]</a>
         <span class="project-language">{{ repository.language }}</span>
+        <a href="{{ repository.html_url }}">[{{ repository.name }}]</a>
         {% if repository.description %}
         <br />
         <span>{{ repository.description }}</span>
