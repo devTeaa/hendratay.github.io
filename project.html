@@ -7,11 +7,12 @@ layout: default
 <ul>
     {% for repository in site.github.public_repositories %}
     <li>
+        {% if repository.language %}
         <span class="project-language">{{ repository.language }}</span>
+        {% endif %}
         <a href="{{ repository.html_url }}">[{{ repository.name }}]</a>
         {% if repository.description %}
-        <br />
-        <span>{{ repository.description }}</span>
+        <br /> <span>{{ repository.description }}</span>
         {% endif %}
     </li>
     {% endfor %}
