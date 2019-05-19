@@ -2,91 +2,55 @@
 layout: default
 ---
 
-<center class="title">/* homepage */</center>
-<input id="search-bar" type="text" placeholder="search" />
-<div class="row">
-	<div class="cell">daily</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://trello.com/">[trello]</a>
-		<a href="https://slack.com/">[slack]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">code</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://github.com/">[github]</a>
-		<a href="https://gitlab.com/">[gitlab]</a>
-		<a href="https://www.codewars.com/">[codewars]</a>
-	</div>
-</div>
-<div class="row">
-    <div class="cell">reference</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://developer.android.com/">[android developer]</a>
-		<a href="https://developers.google.com/android/">[google api for android]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">read</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://medium.com/">[medium]</a>
-		<a href="https://getpocket.com/">[pocket]</a>
-		<a href="http://m.wuxiaworld.co/">[wuxiaworld]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">design</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://www.figma.com/">[figma]</a>
-		<a href="https://pinterest.com">[pinterest]</a>
-		<a href="https://www.uplabs.com/">[uplabs]</a>
-		<a href="https://dribbble.com/">[dribbble]</a>
-		<a href="https://www.behance.net/">[behance]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">resource</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://kenney.nl/">[kenney]</a>
-		<a href="https://www.freepik.com/">[freepik]</a>
-		<a href="https://www.iconfinder.com/">[iconfinder]</a>
-		<a href="https://www.flaticon.com/">[flaticon]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">news</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://www.reddit.com/">[reddit]</a>
-		<a href="https://news.ycombinator.com/">[hacker news]</a>
-	</div>
-</div>
-<div class="row">
-	<div class="cell">sosmed</div>
-    <div class="cell">=></div>
-	<div class="cell">
-		<a href="https://www.youtube.com/">[youtube]</a>
-        <a href="https://devrant.com/">[devrant]</a>
-		<a href="https://www.facebook.com/">[facebook]</a>
-		<a href="https://www.twitter.com/">[twitter]</a>
-	</div>
-</div>
+<center class="title">/* home */</center>
+<hr />
 
-<script>
-	document.getElementById('search-bar').onkeypress = function(event) {
-		if (!event) event = window.event;
-		var keyCode = event.keyCode || event.which;
-		if (keyCode == '13') {
-			window.location.href = 'https://www.google.com/search?q=' + 
-				document.getElementById('search-bar').value;
-			document.getElementById('search-bar').value = '';
-			document.getElementById('search-bar').blur();
-		}
-	}
-</script>
+<div style="text-align: center; font-size: 18px; margin: 12px">
+  [ <i style="color: red">latest posts</i> ]
+</div>
+{% if site.posts.size == 0 %}
+<div align="center">
+  Sorry, No Posts Yet !!
+</div>
+{% else %} {% for post in site.posts limit: 5 %}
+<ul>
+  <li>
+    <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{
+      post.title
+    }}</a>
+  </li>
+  {% endfor %}
+</ul>
+<div align="center" style="margin-top: -14px">
+  <a href="/blog"><i>see more</i></a>
+</div>
+{% endif %}
+
+<br />
+<br />
+
+<div style="text-align: center; font-size: 18px; margin: 12px">
+  [ <i style="color: red">latest projects</i> ]
+</div>
+<ul>
+  {% for repository in site.github.public_repositories limit: 5 %}
+  <li>
+    <a href="{{ repository.html_url }}"
+      >[ <i>{{ repository.name }}</i> ]</a
+    >
+    {% if repository.language %}
+    <span class="project-language" style="font-size: 11px">{{
+      repository.language
+    }}</span>
+    {% endif %} {% if repository.description %}
+    <br />
+    <i>{{ repository.description }}</i>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<div align="center" style="margin-top: -14px">
+  <a href="/project"><i>see more</i></a>
+</div>

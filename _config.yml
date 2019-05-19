@@ -1,9 +1,8 @@
-title: a decidophobia
-logo: /assets/img/coffee.jpg
+title: hendratay
+logo: /assets/img/joker.jpg
 description: >-
-    an android developer that
-    use arch linux and
-    love to procrastinate
+    an android developer and a backend developer.
+    You can learn more about me at <a href="/about">about</a>.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
