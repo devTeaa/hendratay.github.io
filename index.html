@@ -2,55 +2,78 @@
 layout: default
 ---
 
-<center class="title">/* home */</center>
-<hr />
+<style>
+  .console-textarea-container {
+    background-color: transparent;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    font-size: 16px;
+  }
+  .console-textarea,
+  .console-textarea-logs {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    padding-left: 48px;
+    min-height: 12px;
+  }
+  .console-textarea-logs > p {
+    margin: 0;
+    position: relative;
+    white-space: pre-line;
+  }
+  .console-textarea-logs > p:not(:first-child) {
+    margin-top: 0px;
+  }
+  .console-textarea-logs > p.log-item::before,
+  .console-textarea::before {
+    content: "$";
+    color: red;
+  }
+  .console-textarea-logs > p.log-item::before {
+    position: absolute;
+    left: -24px;
+  }
+  .console-textarea::before {
+    position: absolute;
+    left: 24px;
+  }
+  .console-textarea-logs > p::selection,
+  .console-textarea::selection {
+    color: #fff;
+    background-color: #000;
+  }
+  .console-textarea:focus {
+    outline: 0;
+  }
+</style>
 
-<div style="text-align: center; font-size: 18px; margin: 12px">
-  [ <i style="color: red">latest posts</i> ]
-</div>
-{% if site.posts.size == 0 %}
-<div align="center">
-  Sorry, No Posts Yet !!
-</div>
-{% else %} {% for post in site.posts limit: 5 %}
-<ul>
-  <li>
-    <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{
-      post.title
-    }}</a>
-  </li>
-  {% endfor %}
-</ul>
-<div align="center" style="margin-top: -14px">
-  <a href="/blog"><i>see more</i></a>
-</div>
-{% endif %}
+<section class="console-textarea-container">
+  <div class="console-textarea-logs">
+    <p class="log-item">cowsay Hello World, Mooo</p>
+  </div>
+  <div class="console-textarea" contenteditable spellcheck="false"></div>
+</section>
 
-<br />
-<br />
-
-<div style="text-align: center; font-size: 18px; margin: 12px">
-  [ <i style="color: red">latest projects</i> ]
-</div>
-<ul>
-  {% for repository in site.github.public_repositories limit: 5 %}
-  <li>
-    <a href="{{ repository.html_url }}"
-      >[ <i>{{ repository.name }}</i> ]</a
-    >
-    {% if repository.language %}
-    <span class="project-language" style="font-size: 11px">{{
-      repository.language
-    }}</span>
-    {% endif %} {% if repository.description %}
-    <br />
-    <i>{{ repository.description }}</i>
-    {% endif %}
-  </li>
-  {% endfor %}
-</ul>
-
-<div align="center" style="margin-top: -14px">
-  <a href="/project"><i>see more</i></a>
-</div>
+<script>
+  let consoleTextareaLogs = document.querySelector(".console-textarea-logs");
+  let consoleTextarea = document.querySelectorAll(".console-textarea");
+  let sudoRegExp = new RegExp("^sudo .+");
+  consoleTextarea.forEach(el => {
+    el.addEventListener("keypress", e => {
+      let key = e.which || e.keyCode;
+      if (key === 13) {
+        e.preventDefault();
+        let consoleText = el.innerHTML;
+        let p = document.createElement("p");
+        p.className = "log-item";
+        p.innerHTML = consoleText;
+        if (sudoRegExp.test(consoleText)) {
+          p.innerHTML += `\nuser is not in the sudoers file. Please contact hendratay for access.`;
+        }
+        consoleTextareaLogs.appendChild(p);
+        el.innerHTML = "";
+      }
+    });
+  });
+</script>
