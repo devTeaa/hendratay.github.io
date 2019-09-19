@@ -51,6 +51,27 @@ layout: default
 <section class="console-textarea-container">
   <div class="console-textarea-logs">
     <p class="log-item">cowsay Hello World, Mooo</p>
+    <p class="log-item">help
+      <b>list of commands:</b>
+      <table>
+        <tr>
+          <td>[arguments]</td>
+          <td>search with google</td>
+        </tr>
+        <tr>
+          <td>about</td>
+          <td>go to about page</td>
+        </tr>
+        <tr>
+          <td>blog</td>
+          <td>go to blog page</td>
+        </tr>
+        <tr>
+          <td>project</td>
+          <td>go to project page</td>
+        </tr>
+      </table>
+    </p>
   </div>
   <div class="console-textarea" contenteditable spellcheck="false"></div>
 </section>
@@ -70,6 +91,14 @@ layout: default
         p.innerHTML = consoleText;
         if (sudoRegExp.test(consoleText)) {
           p.innerHTML += `\nuser is not in the sudoers file. Please contact hendratay for access.`;
+        } else if (consoleText === "about") {
+          window.location.href = "http://hendratay.github.io/about";
+        } else if (consoleText === "blog") {
+          window.location.href = "http://hendratay.github.io/blog";
+        } else if (consoleText === "project") {
+          window.location.href = "http://hendratay.github.io/project";
+        } else {
+          window.open('https://www.google.com/search?q=' +  consoleText);
         }
         consoleTextareaLogs.appendChild(p);
         el.innerHTML = "";
